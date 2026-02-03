@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Gas Dynamics App",
+    "slug": "gdapp",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "sdkVersion": "50.0.0"
+  }
+}
