@@ -23,9 +23,26 @@ This repo contains a simple Expo (React Native) mobile app that will grow into a
   - **Android**: scan the QR code with the Expo Go app.
   - **Web** (optional): press `w` in the terminal or run `npm run web`.
 
+## EAS Build (Android release)
+1. Authenticate with EAS:
+   ```bash
+   eas login
+   ```
+2. Initialize build configuration:
+   ```bash
+   eas build:configure
+   ```
+3. Build the production Android App Bundle:
+   ```bash
+   eas build -p android --profile production
+   ```
+
+> **Versioning note:** `expo.android.versionCode` starts at `1` and must be incremented for every Play Store release.
+
 ## What’s in the app today
 - **Isentropic tab** with inputs for Mach number and gamma.
-- Live results for common ratios: `T0/T`, `P0/P`, `ρ0/ρ`, and `A/A*`.
+- Live results for common ratios: `T/T0`, `P/P0`, `ρ/ρ0`, `A/A*`, plus the Mach angle.
+- A scratch pad for multiplying a selected ratio by a custom value.
 - **Normal Shock** and **Oblique Shock** tabs are placeholders for the next steps.
 
 ## Next ideas
