@@ -33,24 +33,35 @@ function thetaBetaMach(beta, mach, gamma) {
 }
 
 function findShockAngle({ mach, gamma, thetaRad }) {
-  const machMin = 1 + 1e-6;
-  if (mach <= machMin) {
+  if (mach <= 1) {
     return null;
   }
 
   const betaMin = Math.asin(1 / mach) + 1e-6;
   const betaMax = Math.PI / 2 - 1e-6;
 
-  let lower = betaMin;
-  let upper = betaMax;
-  let fLower = thetaBetaMach(lower, mach, gamma) - thetaRad;
-  let fUpper = thetaBetaMach(upper, mach, gamma) - thetaRad;
+  let maxTheta = -Infinity;
+  let betaAtMax = betaMin;
+  const steps = 140;
+  for (let i = 0; i <= steps; i += 1) {
+    const beta = betaMin + ((betaMax - betaMin) * i) / steps;
+    const theta = thetaBetaMach(beta, mach, gamma);
+    if (theta > maxTheta) {
+      maxTheta = theta;
+      betaAtMax = beta;
+    }
+  }
 
-  if (Number.isNaN(fLower) || Number.isNaN(fUpper)) {
+  if (!Number.isFinite(maxTheta) || thetaRad > maxTheta) {
     return null;
   }
 
-  if (fLower * fUpper > 0) {
+  let lower = betaMin;
+  let upper = betaAtMax;
+  let fLower = thetaBetaMach(lower, mach, gamma) - thetaRad;
+  let fUpper = thetaBetaMach(upper, mach, gamma) - thetaRad;
+
+  if (!Number.isFinite(fLower) || !Number.isFinite(fUpper)) {
     return null;
   }
 
@@ -60,7 +71,7 @@ function findShockAngle({ mach, gamma, thetaRad }) {
     if (Math.abs(fMid) < 1e-7) {
       return mid;
     }
-    if (fLower * fMid < 0) {
+    if (fLower * fMid <= 0) {
       upper = mid;
       fUpper = fMid;
     } else {
@@ -155,7 +166,10 @@ export default function ObliqueShockScreen() {
 
     const computed = computeObliqueShock({ mach, gamma, thetaDeg: theta });
     if (!computed) {
-      return { error: "No attached oblique shock solution for this deflection angle.", results: null };
+      return {
+        error: "No attached oblique shock solution for this deflection angle.",
+        results: null,
+      };
     }
 
     return { results: computed, error: null };
