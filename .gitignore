@@ -1,0 +1,21 @@
+# Expo
+.expo/
+.expo-shared/
+
+# Node
+node_modules/
+
+# EAS / build outputs
+build/
+dist/
+android/app/build/
+*.apk
+*.aab
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
