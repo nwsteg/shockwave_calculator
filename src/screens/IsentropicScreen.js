@@ -1,7 +1,6 @@
 import { useMemo, useState } from "react";
 import {
   SafeAreaView,
-  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -103,11 +102,8 @@ export default function IsentropicScreen() {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.container}>
         <Text style={styles.title}>Isentropic Flow</Text>
-        <Text style={styles.subtitle}>
-          Enter a Mach number and specific heat ratio (gamma) to compute common ratios.
-        </Text>
 
         <View style={styles.card}>
           <Text style={styles.sectionTitle}>Inputs</Text>
@@ -167,9 +163,6 @@ export default function IsentropicScreen() {
 
         <View style={styles.card}>
           <Text style={styles.sectionTitle}>Scratch Pad</Text>
-          <Text style={styles.mutedText}>
-            Tap a ratio above to start a multiplication. Then add your value and press Compute.
-          </Text>
           <View style={styles.scratchRow}>
             <TextInput
               keyboardType="decimal-pad"
@@ -192,7 +185,7 @@ export default function IsentropicScreen() {
             </TouchableOpacity>
           </View>
         </View>
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }
@@ -203,48 +196,42 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5F7FB",
   },
   container: {
-    padding: 20,
-    paddingBottom: 40,
+    flex: 1,
+    padding: 16,
+    gap: 12,
   },
   title: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: "700",
-    marginBottom: 6,
-  },
-  subtitle: {
-    fontSize: 16,
-    color: "#4C566A",
-    marginBottom: 20,
   },
   card: {
     backgroundColor: "#FFFFFF",
-    borderRadius: 16,
-    padding: 16,
-    marginBottom: 16,
+    borderRadius: 14,
+    padding: 12,
     shadowColor: "#000",
-    shadowOpacity: 0.06,
-    shadowRadius: 8,
+    shadowOpacity: 0.05,
+    shadowRadius: 6,
     elevation: 2,
   },
   sectionTitle: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "600",
-    marginBottom: 12,
+    marginBottom: 8,
   },
   inputGroup: {
-    marginBottom: 12,
+    marginBottom: 8,
   },
   inputLabel: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: "600",
-    marginBottom: 6,
+    marginBottom: 4,
   },
   input: {
     borderWidth: 1,
     borderColor: "#D0D5DD",
-    borderRadius: 12,
-    padding: 12,
-    fontSize: 16,
+    borderRadius: 10,
+    padding: 10,
+    fontSize: 15,
     backgroundColor: "#FAFAFB",
   },
   errorText: {
@@ -254,47 +241,46 @@ const styles = StyleSheet.create({
   },
   mutedText: {
     color: "#667085",
-    marginBottom: 12,
   },
   scratchRow: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 16,
+    marginBottom: 10,
   },
   scratchInput: {
     flex: 1,
   },
   equals: {
-    marginHorizontal: 10,
-    fontSize: 18,
+    marginHorizontal: 8,
+    fontSize: 16,
     fontWeight: "600",
   },
   resultText: {
-    minWidth: 80,
+    minWidth: 72,
     textAlign: "right",
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: "600",
   },
   buttonRow: {
     flexDirection: "row",
     justifyContent: "flex-end",
-    gap: 12,
+    gap: 10,
   },
   secondaryButton: {
     borderWidth: 1,
     borderColor: "#D0D5DD",
-    borderRadius: 12,
-    paddingVertical: 10,
-    paddingHorizontal: 16,
+    borderRadius: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 14,
   },
   primaryButton: {
     backgroundColor: "#2563EB",
-    borderRadius: 12,
-    paddingVertical: 10,
-    paddingHorizontal: 16,
+    borderRadius: 10,
+    paddingVertical: 8,
+    paddingHorizontal: 14,
   },
   buttonText: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: "600",
   },
   primaryButtonText: {
