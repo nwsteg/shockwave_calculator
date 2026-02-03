@@ -1,13 +1,20 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export default function ResultRow({ label, value, unit }) {
+export default function ResultRow({ label, value, unit, onPress }) {
+  const RowComponent = onPress ? TouchableOpacity : View;
+
   return (
-    <View style={styles.row}>
+    <RowComponent
+      style={styles.row}
+      onPress={onPress}
+      activeOpacity={0.7}
+      accessibilityRole={onPress ? "button" : undefined}
+    >
       <Text style={styles.label}>{label}</Text>
       <Text style={styles.value}>
         {value} {unit}
       </Text>
-    </View>
+    </RowComponent>
   );
 }
 
@@ -16,6 +23,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 10,
+    paddingVertical: 8,
   },
   label: {
     fontSize: 16,
