@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import IsentropicScreen from "./src/screens/IsentropicScreen";
+import NormalShockScreen from "./src/screens/NormalShockScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -21,15 +22,7 @@ export default function App() {
       <StatusBar style="dark" />
       <Tab.Navigator screenOptions={{ headerShown: false }}>
         <Tab.Screen name="Isentropic" component={IsentropicScreen} />
-        <Tab.Screen
-          name="Normal Shock"
-          children={() => (
-            <PlaceholderScreen
-              title="Normal Shock"
-              description="This tab will cover normal shock wave calculations next."
-            />
-          )}
-        />
+        <Tab.Screen name="Normal Shock" component={NormalShockScreen} />
         <Tab.Screen
           name="Oblique Shock"
           children={() => (
