@@ -275,13 +275,21 @@ export default function CondensationScreen() {
                   strokeWidth={1}
                 />
                 <Path d={saturationPath} stroke="#6B7280" strokeWidth={2} fill="none" />
-                {derived.data && (
-                  <Path d={isentropePath} stroke="#2563EB" strokeWidth={2} fill="none" />
-                )}
-                {showMarkers &&
-                  markerPoints.map((point) => (
-                    <Circle
-                      key={`mach-${point.mach}`}
+              {derived.data && (
+                <Path d={isentropePath} stroke="#2563EB" strokeWidth={2} fill="none" />
+              )}
+              {derived.data?.intersection && (
+                <Circle
+                  cx={scaleX(derived.data.intersection.Tc)}
+                  cy={scaleY(derived.data.intersection.pSat)}
+                  r={4}
+                  fill="#DC2626"
+                />
+              )}
+              {showMarkers &&
+                markerPoints.map((point) => (
+                  <Circle
+                    key={`mach-${point.mach}`}
                       cx={scaleX(point.T)}
                       cy={scaleY(point.p)}
                       r={3}
@@ -341,24 +349,28 @@ export default function CondensationScreen() {
           <Text style={styles.sectionTitle}>Derived values</Text>
           {derived.data ? (
             <View>
-              <Text style={styles.valueRow}>p0 = {formatNumber(derived.data.p0MmHg, 2)} mmHg</Text>
               {derived.data.intersection ? (
                 <Text style={styles.valueRow}>
-                  Tc ≈ {formatNumber(derived.data.intersection.Tc, 1)} K, Pc ≈
+                  Mc ≈ {intersectionMach ? formatNumber(intersectionMach, 2) : "-"} · Tc ≈
+                  {formatNumber(derived.data.intersection.Tc, 1)} K · Pc ≈
                   {formatNumber(derived.data.intersection.pSat, 2)} mmHg
                 </Text>
               ) : (
                 <Text style={styles.valueRow}>No intersection within plotted range.</Text>
               )}
               {derived.data.t0Min ? (
-              <Text style={styles.valueRow}>
-                T0 min @ M*={formatNumber(derived.data.machStar, 1)} ≈
-                {formatNumber(derived.data.t0Min.t0Min, 1)} K (T_sat ≈
-                {formatNumber(derived.data.t0Min.tSat, 1)} K @ p = p0·(p/p0)M*)
-              </Text>
+                <Text style={styles.valueRow}>
+                  T_sat ≈ {formatNumber(derived.data.t0Min.tSat, 1)} K @ p = p0·(p/p0)M*
+                </Text>
               ) : (
                 <Text style={styles.valueRow}>T0 min unavailable for this M* and p0.</Text>
               )}
+              {derived.data.t0Min ? (
+                <Text style={styles.valueRow}>
+                  T0 min @ M*={formatNumber(derived.data.machStar, 1)} ≈
+                  {formatNumber(derived.data.t0Min.t0Min, 1)} K
+                </Text>
+              ) : null}
             </View>
           ) : (
             <Text style={styles.mutedText}>Enter valid inputs to compute results.</Text>
