@@ -1,6 +1,6 @@
-# Gas Dynamics Mobile App
+# Shockwave Calculator
 
-This repo contains a simple Expo (React Native) mobile app that will grow into a gas dynamics calculator. The first tabs cover isentropic flow, normal shock, oblique shock, and condensation plotting.
+This repo contains a simple Expo (React Native) mobile app that will grow into a shockwave-focused gas dynamics calculator. The first tabs cover isentropic flow, normal shock, oblique shock, and condensation plotting.
 
 ## Getting started (first-time setup)
 1. Install Node.js 18+ (LTS recommended).
@@ -50,3 +50,12 @@ This repo contains a simple Expo (React Native) mobile app that will grow into a
 ## Next ideas
 - Add units and explanations to each ratio.
 - Add a "solve for Mach" toggle for inverse calculations.
+
+## Privacy policy (GitHub Pages)
+This repo includes a privacy policy at `docs/index.md`. To host it on GitHub Pages:
+1. Go to **Settings → Pages** in the GitHub repo.
+2. Under **Build and deployment**, select **Deploy from a branch**.
+3. Set **Branch** to your default branch and **/docs** as the folder, then save.
+
+Once enabled, the policy will be available at:
+`https://<github-username>.github.io/<repository>/` (for example, `https://nwsteg.github.io/shockwave_calculator/`).

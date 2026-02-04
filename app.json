@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "Gas Dynamics App",
-    "slug": "gdapp",
+    "name": "Shockwave Calculator",
+    "slug": "shockwave-calculator",
     "version": "0.1.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "android": {
-      "package": "com.nwsteg.gdapp",
+      "package": "com.nwsteg.shockwavecalculator",
       "versionCode": 1
     }
   }
