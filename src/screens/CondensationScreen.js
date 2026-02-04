@@ -1,14 +1,6 @@
 import { useMemo, useState } from "react";
-import {
-  Dimensions,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Switch,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { Dimensions, ScrollView, StyleSheet, Switch, Text, TextInput, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import Svg, { Circle, Line, Path, Text as SvgText } from "react-native-svg";
 import {
   classifyRegion,
@@ -284,7 +276,7 @@ export default function CondensationScreen() {
                 />
                 <Path d={saturationPath} stroke="#6B7280" strokeWidth={2} fill="none" />
                 {derived.data && (
-                  <Path d={isentropicPath} stroke="#2563EB" strokeWidth={2} fill="none" />
+                  <Path d={isentropePath} stroke="#2563EB" strokeWidth={2} fill="none" />
                 )}
                 {showMarkers &&
                   markerPoints.map((point) => (

@@ -1,12 +1,6 @@
 import { useMemo, useState } from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import ResultRow from "../components/ResultRow";
 
 const DEFAULT_GAMMA = "1.4";
