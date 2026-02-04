@@ -14,10 +14,10 @@ import {
   psiaToMmHg,
 } from "../utils/condensation";
 
-const DEFAULT_P0 = "14.7";
-const DEFAULT_T0 = "220";
+const DEFAULT_P0 = "350";
+const DEFAULT_T0 = "300";
 const DEFAULT_MACH_MIN = "2.9";
-const DEFAULT_MACH_MAX = "7.0";
+const DEFAULT_MACH_MAX = "7.2";
 const DEFAULT_MACH_STAR = "5.0";
 
 const MACH_MARKERS = [3, 4, 5, 6, 7];
@@ -351,11 +351,11 @@ export default function CondensationScreen() {
                 <Text style={styles.valueRow}>No intersection within plotted range.</Text>
               )}
               {derived.data.t0Min ? (
-                <Text style={styles.valueRow}>
-                  T0 min @ M*={formatNumber(derived.data.machStar, 1)} ≈
-                  {formatNumber(derived.data.t0Min.t0Min, 1)} K (T_sat ≈
-                  {formatNumber(derived.data.t0Min.tSat, 1)} K)
-                </Text>
+              <Text style={styles.valueRow}>
+                T0 min @ M*={formatNumber(derived.data.machStar, 1)} ≈
+                {formatNumber(derived.data.t0Min.t0Min, 1)} K (T_sat ≈
+                {formatNumber(derived.data.t0Min.tSat, 1)} K @ p = p0·(p/p0)M*)
+              </Text>
               ) : (
                 <Text style={styles.valueRow}>T0 min unavailable for this M* and p0.</Text>
               )}

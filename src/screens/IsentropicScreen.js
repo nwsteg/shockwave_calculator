@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import ResultRow from "../components/ResultRow";
 
 const DEFAULT_GAMMA = "1.4";
-const DEFAULT_MACH = "2.0";
+const DEFAULT_MACH = "7.2";
 
 function formatNumber(value) {
   if (!Number.isFinite(value)) {

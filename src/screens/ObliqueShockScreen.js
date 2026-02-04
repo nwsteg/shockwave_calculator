@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import ResultRow from "../components/ResultRow";
 
 const DEFAULT_GAMMA = "1.4";
-const DEFAULT_MACH = "2.0";
+const DEFAULT_MACH = "7.2";
 const DEFAULT_THETA = "15";
 
 function formatNumber(value) {
