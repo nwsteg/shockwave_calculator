@@ -57,6 +57,8 @@ export default function CondensationScreen() {
   const [machMaxInput, setMachMaxInput] = useState(DEFAULT_MACH_MAX);
   const [machStarInput, setMachStarInput] = useState(DEFAULT_MACH_STAR);
   const [showMarkers, setShowMarkers] = useState(true);
+  // TODO(paywall): Wire this to real purchase state once Play Billing is integrated.
+  const [isCondensationUnlocked] = useState(true);
 
   const saturation = useMemo(() => generateSaturationCurve(), []);
 
@@ -177,6 +179,17 @@ export default function CondensationScreen() {
     <SafeAreaView style={styles.safeArea}>
       <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.title}>Condensation</Text>
+
+        {!isCondensationUnlocked ? (
+          <View style={[styles.card, styles.lockedCard]}>
+            <Text style={styles.sectionTitle}>Condensation (Locked)</Text>
+            <Text style={styles.lockedText}>
+              This tab will require a $1 unlock in a future release. For now it is available while
+              the paywall flow is being built.
+            </Text>
+            {/* TODO(paywall): Add purchase button + restore purchases flow here. */}
+          </View>
+        ) : null}
 
         <View style={styles.card}>
           <Text style={styles.sectionTitle}>Inputs</Text>
@@ -456,5 +469,14 @@ const styles = StyleSheet.create({
   },
   mutedText: {
     color: "#667085",
+  },
+  lockedCard: {
+    borderWidth: 1,
+    borderColor: "#FACC15",
+    backgroundColor: "#FFFBEB",
+  },
+  lockedText: {
+    fontSize: 13,
+    color: "#92400E",
   },
 });
