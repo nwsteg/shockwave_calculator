@@ -11,6 +11,7 @@ import {
   isentropicPressureRatio,
   isentropicTemperatureRatio,
   findIntersection,
+  mmHgToPsia,
   psiaToMmHg,
 } from "../utils/condensation";
 
@@ -18,7 +19,7 @@ const DEFAULT_P0 = "350";
 const DEFAULT_T0 = "300";
 const DEFAULT_MACH_MIN = "2.9";
 const DEFAULT_MACH_MAX = "7.2";
-const DEFAULT_MACH_STAR = "5.0";
+const DEFAULT_MACH_STAR = "7.2";
 
 const MACH_MARKERS = [3, 4, 5, 6, 7];
 
@@ -353,7 +354,7 @@ export default function CondensationScreen() {
                 <Text style={styles.valueRow}>
                   Mc ≈ {intersectionMach ? formatNumber(intersectionMach, 2) : "-"} · Tc ≈
                   {formatNumber(derived.data.intersection.Tc, 1)} K · Pc ≈
-                  {formatNumber(derived.data.intersection.pSat, 2)} mmHg
+                  {formatNumber(mmHgToPsia(derived.data.intersection.pSat), 2)} psia
                 </Text>
               ) : (
                 <Text style={styles.valueRow}>No intersection within plotted range.</Text>
