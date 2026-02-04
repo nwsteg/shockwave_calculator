@@ -1,6 +1,6 @@
 # Gas Dynamics Mobile App
 
-This repo contains a simple Expo (React Native) mobile app that will grow into a gas dynamics calculator. The first tabs cover isentropic flow, normal shock, and oblique shock relations.
+This repo contains a simple Expo (React Native) mobile app that will grow into a gas dynamics calculator. The first tabs cover isentropic flow, normal shock, oblique shock, and condensation plotting.
 
 ## Getting started (first-time setup)
 1. Install Node.js 18+ (LTS recommended).
@@ -45,6 +45,7 @@ This repo contains a simple Expo (React Native) mobile app that will grow into a
 - A scratch pad for multiplying a selected ratio by a custom value.
 - **Normal Shock tab** with upstream Mach/gamma inputs, key shock ratios, and a scratch pad.
 - **Oblique Shock tab** with upstream Mach/gamma/deflection inputs, key shock ratios, and a scratch pad.
+- **Condensation tab** with an offline vapor pressure plot, isentropic overlay, and condensation classification.
 
 ## Next ideas
 - Add units and explanations to each ratio.
