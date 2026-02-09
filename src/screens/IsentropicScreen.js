@@ -1,7 +1,8 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ResultRow from "../components/ResultRow";
+import { useProfile } from "../utils/ProfileContext";
 
 const DEFAULT_GAMMA = "1.4";
 const DEFAULT_MACH = "7.2";
@@ -57,10 +58,17 @@ function parseScratchExpression(expression) {
 }
 
 export default function IsentropicScreen() {
-  const [machInput, setMachInput] = useState(DEFAULT_MACH);
+  const { profile } = useProfile();
+  const [machInput, setMachInput] = useState(profile.mach || DEFAULT_MACH);
   const [gammaInput, setGammaInput] = useState(DEFAULT_GAMMA);
   const [scratchInput, setScratchInput] = useState("");
   const [scratchResult, setScratchResult] = useState(null);
+
+  useEffect(() => {
+    if (profile.mach) {
+      setMachInput(profile.mach);
+    }
+  }, [profile.mach]);
 
   const { results, error } = useMemo(() => {
     const mach = Number.parseFloat(machInput);
@@ -76,11 +84,13 @@ export default function IsentropicScreen() {
     return { results: computeIsentropic({ mach, gamma }), error: null };
   }, [machInput, gammaInput]);
 
-  const handleRatioPress = (value) => {
+  const handleRatioPress = (value, baseValue) => {
     if (!Number.isFinite(value)) {
       return;
     }
-    setScratchInput(`${value.toFixed(4)}*`);
+    const baseNumber = Number.parseFloat(baseValue);
+    const suffix = Number.isFinite(baseNumber) ? baseNumber : "";
+    setScratchInput(`${value.toFixed(4)}*${suffix}`);
     setScratchResult(null);
   };
 
@@ -131,12 +141,12 @@ export default function IsentropicScreen() {
               <ResultRow
                 label="T / T0"
                 value={formatNumber(results.temperatureRatio)}
-                onPress={() => handleRatioPress(results.temperatureRatio)}
+                onPress={() => handleRatioPress(results.temperatureRatio, profile.t0)}
               />
               <ResultRow
                 label="P / P0"
                 value={formatNumber(results.pressureRatio)}
-                onPress={() => handleRatioPress(results.pressureRatio)}
+                onPress={() => handleRatioPress(results.pressureRatio, profile.p0)}
               />
               <ResultRow
                 label="ρ / ρ0"
