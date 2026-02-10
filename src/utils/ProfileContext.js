@@ -1,8 +1,8 @@
 import { createContext, useContext, useMemo, useState } from "react";
 
 const DEFAULT_PROFILE = {
-  p0: "14.696",
-  t0: "288",
+  p0: "350",
+  t0: "650",
   mach: "7.2",
 };
 

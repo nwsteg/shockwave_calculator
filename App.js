@@ -30,9 +30,9 @@ export default function App() {
           <StatusBar style="dark" />
           <Drawer.Navigator
             screenOptions={{
-              headerTitleStyle: { fontWeight: "700" },
-              headerTintColor: "#111827",
+                            headerTintColor: "#111827",
               drawerActiveTintColor: "#2563EB",
+              headerTitle: "",
               headerLeft: (props) => <HeaderMenuIndicator {...props} />,
             }}
           >

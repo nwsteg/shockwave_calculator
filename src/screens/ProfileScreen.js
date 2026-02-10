@@ -26,7 +26,7 @@ export default function ProfileScreen() {
               value={profile.p0}
               onChangeText={(value) => updateField("p0", value)}
               style={styles.input}
-              placeholder="e.g. 14.7"
+              placeholder="e.g. 350"
             />
           </View>
           <View style={styles.inputGroup}>
@@ -36,7 +36,7 @@ export default function ProfileScreen() {
               value={profile.t0}
               onChangeText={(value) => updateField("t0", value)}
               style={styles.input}
-              placeholder="e.g. 288"
+              placeholder="e.g. 650"
             />
           </View>
           <View style={styles.inputGroup}>
