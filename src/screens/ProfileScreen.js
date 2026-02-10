@@ -20,17 +20,17 @@ export default function ProfileScreen() {
         <View style={styles.card}>
           <Text style={styles.sectionTitle}>Reference Conditions</Text>
           <View style={styles.inputGroup}>
-            <Text style={styles.inputLabel}>Total pressure (P0)</Text>
+            <Text style={styles.inputLabel}>Total pressure (P0) [psia]</Text>
             <TextInput
               keyboardType="decimal-pad"
               value={profile.p0}
               onChangeText={(value) => updateField("p0", value)}
               style={styles.input}
-              placeholder="e.g. 101325"
+              placeholder="e.g. 14.7"
             />
           </View>
           <View style={styles.inputGroup}>
-            <Text style={styles.inputLabel}>Total temperature (T0)</Text>
+            <Text style={styles.inputLabel}>Total temperature (T0) [K]</Text>
             <TextInput
               keyboardType="decimal-pad"
               value={profile.t0}
@@ -50,8 +50,8 @@ export default function ProfileScreen() {
             />
           </View>
           <Text style={styles.helperText}>
-            Ratio rows will multiply by these defaults when you tap a pressure or temperature
-            ratio.
+            Pressure ratios use P0 in psia and temperature ratios use T0 in K when you tap a
+            row.
           </Text>
         </View>
       </View>
